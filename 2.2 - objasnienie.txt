@@ -1,0 +1,21 @@
+>>> 5 == 5, 4 > 5              # porównania
+(True, False)  -- została utworzona krotka z dwóch wartości bool.
+>>> type(True), type(False)       # bool, bool
+(<type 'bool'>, <type 'bool'>) -- została utworzona krotka z dwóch wartości 'type<bool>'
+>>> type(1), type(0)              # int, int
+(<type 'int'>, <type 'int'>) -- została utworzona krotka z dwóch wartości 'type<'int'>'
+>>> x = 5 
+>>> x == 5 and 3                  # 3       
+3 -- (True and 3) daje 3 bo 'and' sprawdza pierwszą wartość czy jest true, jeśli tak to sprawdza następną i ją zwraca.
+>>> x == 4 and 3                  # False
+False -- (False and 3) daje False bo pierwsza wartość jest false -> druga wartość jest nie sprawdzana
+>>> 3 and x == 5                  # True 
+True -- zwrócona została druga wartość
+>>> 3 and x == 4                  # False
+False -- zwrócona została druga wartość
+>>> 1 < x < 9               # łączenie operatorów porównania
+True -- x > 1 and x < 9
+>>> isinstance(True, int)         # True
+True -- int(True) == 1
+>>> isinstance(True, bool)         # True 
+True -- bool(True) == True.
