@@ -4,7 +4,7 @@
 # P(i, j) = 0.5 * (P(i-1, j) + P(i, j-1)) dla i > 0, j > 0.
 
 
-def solve_dynamc(i, j):
+def solve_dynamic(i, j):
     i, j = i + 1, j + 1
     value_list = {0: [0.5] + [1.0 for m in range(1, j)]}
     for n in range(1, i):
@@ -37,10 +37,10 @@ def get_array(i, j, func):
 if __name__ == '__main__':
     i, j = 2, 4
 
-    value_dynamic = solve_dynamc(i, j)
+    value_dynamic = solve_dynamic(i, j)
     value_recursive = solve_recursive(i, j)
     recursive_array = get_array(i, j, solve_recursive)
-    dynamic_array = get_array(i, j, solve_dynamc)
+    dynamic_array = get_array(i, j, solve_dynamic)
 
     print recursive_array
     print dynamic_array
