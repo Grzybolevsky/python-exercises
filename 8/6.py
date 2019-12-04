@@ -6,7 +6,7 @@
 
 def solve_dynamic(i, j):
     i, j = i + 1, j + 1
-    value_list = {0: [0.5] + [1.0 for m in range(1, j)]}
+    value_list = {0: [0.5] + [1.0] * (j - 1)}
     for n in range(1, i):
         value_list[n] = [0.0]
         for m in range(1, j):
