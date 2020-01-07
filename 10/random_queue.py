@@ -1,5 +1,6 @@
 # coding=utf-8
 """Zadanie 8"""
+from random import randint
 
 
 class RandomQueue(object):
@@ -13,12 +14,13 @@ class RandomQueue(object):
         self.queue.append(item)
 
     def remove(self):
-        from random import randint
-
-        random_num = randint(0, len(self.queue) - 1)
-        random_item = self.queue[random_num]
-        self.queue.remove(random_item)
-        return random_item
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        index = randint(0, len(self.queue) - 1)
+        element = self.queue[index]
+        self.queue[index] = self.queue[-1]
+        del self.queue[-1]
+        return element
 
     def is_empty(self):
         return len(self.queue) == 0
