@@ -1,16 +1,18 @@
 import unittest
 
+
 def mediana_sort(L, left, right):
-    elements_count = right - left
-    if elements_count < 0:
+    if right - left < 0:
         raise ValueError("Right < left")
+    elif right > len(L) or left < 0:
+        raise ValueError("Right or left not in range")
     sorted_list = L[left:right]
     sorted_list.sort()
-    L = L[0:left] + sorted_list + L[right:len(L)]
-    mid = (left + right) / 2
+    elements_count = len(sorted_list)
+    mid = elements_count // 2
     if elements_count % 2 == 0:
-        return float((L[mid - 1] + L[mid])) / 2
-    return L[mid]
+        return float((sorted_list[mid - 1] + sorted_list[mid])) / 2
+    return sorted_list[mid]
 
 
 class TestBinarySearch(unittest.TestCase):
@@ -25,3 +27,21 @@ class TestBinarySearch(unittest.TestCase):
         self.L.append(11)
         mediana = mediana_sort(self.L, 0, len(self.L))
         self.assertEqual(mediana, 6)
+
+    def test_range_even(self):
+        mediana = mediana_sort(self.L, 0, 2)
+        self.assertEqual(mediana, 4.0)
+        mediana = mediana_sort(self.L, 3, 5)
+        self.assertEqual(mediana, 6.5)
+
+    def test_range_mean(self):
+        mediana = mediana_sort(self.L, 0, 3)
+        self.assertEqual(mediana, 3)
+        mediana = mediana_sort(self.L, 3, 6)
+        self.assertEqual(mediana, 8)
+
+    def test_out_of_range(self):
+        with self.assertRaises(ValueError):
+            mediana_sort(self.L, -1, 6)
+        with self.assertRaises(ValueError):
+            mediana_sort(self.L, 3, 1)
