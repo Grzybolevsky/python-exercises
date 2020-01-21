@@ -4,7 +4,7 @@ import unittest
 def binary_search_rec(L, left, right, x):
     """Wyszukiwanie binarne w wersji rekurencyjnej."""
     if right >= 1:
-        mid = left + (right - 1) / 2
+        mid = (left + right) // 2
         if L[mid] == x:
             return mid
         elif L[mid] > x:
